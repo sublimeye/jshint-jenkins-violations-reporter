@@ -1,6 +1,6 @@
 {
   "name": "jshint-jenkins-violations-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JSHint reporter with better support for Jenkins Violations plugin",
   "main": "src/index.js",
   "scripts": {
