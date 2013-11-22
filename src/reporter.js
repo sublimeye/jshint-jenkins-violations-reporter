@@ -44,6 +44,7 @@ module.exports =
 						"\" char=\"" + issue.character +
 						"\" reason=\"" + encode(issue.reason) +
 						"\" evidence=\"" + encode(issue.evidence) +
+					// (issue.code ? "\" severity=\"" + encode(issue.code.charAt(0)) : "") +
 						(issue.code ? "\" severity=\"" + encode(issue.code) : "") +
 						"\" />");
 			}
