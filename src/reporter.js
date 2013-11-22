@@ -13,7 +13,12 @@ module.exports =
 					"<": "&lt;",
 					">": "&gt;"
 				},
-				file, i, issue;
+				severityCodes = {
+					'e': 'Error',
+					'w': 'Warning',
+					'i': 'Info'
+				},
+				file, i, issue, severity, reason, evidence, character, line;
 
 		function encode(s) {
 			for (var r in pairs) {
@@ -22,6 +27,10 @@ module.exports =
 				}
 			}
 			return s || "";
+		}
+
+		function parseSeverity(code) {
+			return severityCodes[ code.charAt(0).toLowerCase() ] || '';
 		}
 
 
@@ -37,18 +46,20 @@ module.exports =
 		out.push("<jslint>");
 
 		for (file in files) {
-			out.push("\t<file name=\"" + file + "\">");
+			out.push('\t<file name="/' + file + '">');
+
 			for (i = 0; i < files[file].length; i++) {
 				issue = files[file][i];
-				out.push("\t\t<issue line=\"" + issue.line +
-						"\" char=\"" + issue.character +
-						"\" reason=\"" + encode(issue.reason) +
-						"\" evidence=\"" + encode(issue.evidence) +
-					// (issue.code ? "\" severity=\"" + encode(issue.code.charAt(0)) : "") +
-						(issue.code ? "\" severity=\"" + encode(issue.code) : "") +
-						"\" />");
+				reason = encode(issue.reason);
+				evidence = encode(issue.evidence);
+				severity = encode(parseSeverity(issue.code));
+				character = issue.character;
+				line = issue.line;
+
+				out.push('\t\t<issue line="'+line+'" char="'+character+'" reason="'+reason+'" evidence="'+evidence+'" severity="'+severity+'" />');
+
 			}
-			out.push("\t</file>");
+			out.push('\t</file>');
 		}
 
 		out.push("</jslint>");
