@@ -1,0 +1,28 @@
+{
+  "name": "jshint-jenkins-violations-reporter",
+  "version": "0.0.1",
+  "description": "JSHint reporter with better support for Jenkins Violations plugin",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sublimeye/jshint-jenkins-violations-reporter.git"
+  },
+  "keywords": [
+    "jshint",
+    "reporter",
+    "jenkins",
+    "violations plugin",
+    "jslint",
+    "ci",
+    "jshint ci",
+    "continuous integration"
+  ],
+  "author": "SublimeYe <sublimeye.ua@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sublimeye/jshint-jenkins-violations-reporter/issues"
+  }
+}
