@@ -41,12 +41,13 @@ module.exports =
 			}
 			files[result.file].push(result.error);
 		});
-
+		var path = require('path');
 		out.push("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 		out.push("<jslint>");
 
 		for (file in files) {
-			out.push('\t<file name="/' + file + '">');
+			
+			out.push('\t<file name="' + path.resolve(file) + '">');
 
 			for (i = 0; i < files[file].length; i++) {
 				issue = files[file][i];
